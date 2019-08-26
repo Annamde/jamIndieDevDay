@@ -6,22 +6,27 @@ public class PlayerScript : MonoBehaviour
 {
     CharacterController characterController;
 
-    public Transform cameraAnchor;
+    Camera cam;
 
-    float xMovement, zMovement;
-    public float speed;
+    float xMovement, zMovement, yaw;
+    public float movSpeed, lateralSpeed;
 
     public bool canMove = true;
 
     private void Start()
     {
         characterController = GetComponent<CharacterController>();
+        cam = Camera.main;
+        yaw = transform.localRotation.eulerAngles.y;
     }
 
     private void Update()
     {
         if (canMove)
+        {
             Movement();
+            Rotation();
+        }
     }
 
     public void Movement()
@@ -33,23 +38,28 @@ public class PlayerScript : MonoBehaviour
 
         if (Mathf.Abs(xMovement) > 0 || Mathf.Abs(zMovement) > 0)
         {
-            Vector3 forward = cameraAnchor.forward;
+            Vector3 forward = transform.forward;
             forward.y = 0;
             forward.Normalize();
-            Vector3 right = cameraAnchor.right;
+            Vector3 right = transform.right;
             right.y = 0;
             right.Normalize();
 
             movement = forward * zMovement + right * xMovement;
-            transform.localRotation = Quaternion.LookRotation(movement);
         }
 
         if (!characterController.isGrounded)
             movement.y = Physics.gravity.y * Time.deltaTime * 10;
 
-        Vector3 controllerMovement = movement.normalized * speed * Time.deltaTime;
+        Vector3 controllerMovement = movement.normalized * movSpeed * Time.deltaTime;
         characterController.Move(controllerMovement);
+    }
 
-        cameraAnchor.position = transform.position;
+    public void Rotation()
+    {
+        float hRotation = Input.GetAxis("Mouse X");
+        yaw += hRotation * lateralSpeed * Time.deltaTime;
+
+        transform.localRotation = Quaternion.Euler(transform.localRotation.x, yaw, 0);
     }
 }
