@@ -1007,37 +1007,6 @@ Transform:
   m_Father: {fileID: 5405134051663266482}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1022197111246160320
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1022197111246160321}
-  m_Layer: 0
-  m_Name: CameraAnchor
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1022197111246160321
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1022197111246160320}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.66999996, y: -0.5, z: -0.22}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1022197111655357025}
-  m_Father: {fileID: 1022197111255588496}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1022197111255588524
 GameObject:
   m_ObjectHideFlags: 0
@@ -1069,7 +1038,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 969011170324882713}
-  - {fileID: 1022197111246160321}
+  - {fileID: 1022197111655357025}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1145,12 +1114,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1022197111655357054}
-  m_LocalRotation: {x: 0.3367838, y: -0, z: -0, w: 0.94158196}
-  m_LocalPosition: {x: 0, y: 10.7, z: -8.4}
+  m_LocalRotation: {x: 0.33678383, y: -0, z: -0, w: 0.941582}
+  m_LocalPosition: {x: -0.66999996, y: 10.2, z: -8.62}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1022197111246160321}
-  m_RootOrder: 0
+  m_Father: {fileID: 1022197111255588496}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 39.362003, y: 0, z: 0}
 --- !u!20 &1022197111655357024
 Camera:
