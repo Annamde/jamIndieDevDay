@@ -62,4 +62,13 @@ public class PlayerScript : MonoBehaviour
 
         transform.localRotation = Quaternion.Euler(transform.localRotation.x, yaw, 0);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag=="sueter")
+        {
+            GameManager.score += 50; //eso luego se pone con una variable y eso, pero era pa ponerle algo
+            Destroy(other.gameObject);
+        }
+    }
 }
