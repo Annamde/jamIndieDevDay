@@ -1068,7 +1068,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1022197111255588524}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2
@@ -1086,9 +1086,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e183048d7b47af74bae48212bb6e5d18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movSpeed: 7
+  movSpeed: 12
   lateralSpeed: 120
-  canMove: 1
+  pickingTime: 0.5
+  pickingItem: 0
+  pickingSueter: 0
 --- !u!1 &1022197111655357054
 GameObject:
   m_ObjectHideFlags: 0

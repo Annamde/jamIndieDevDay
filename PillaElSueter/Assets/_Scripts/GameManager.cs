@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Constants")]
     public float initialTime;
+    public float enabledSueterTime; 
 
     [Header("Sueter Variables")]
     public Transform suetersParent; //empty que contiene todos los sueters
@@ -68,6 +69,10 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        print(minSueterTime + " min");
+        print(maxSueterTime+" max");
+
+
         currentTime -= Time.deltaTime;
 
         if (currentTime <= 0)
@@ -96,9 +101,11 @@ public class GameManager : MonoBehaviour
             int rdm = Random.Range(0, disabledSuetersList.Count);
             disabledSuetersList[rdm].SetActive(true);
             disabledSuetersList.RemoveAt(rdm);
-
-            minSueterTime -= minSueterTime * 10 / 100;
-            maxSueterTime -= maxSueterTime * 10/100;
+            if (minSueterTime >= 1 && maxSueterTime >= 3)
+            {
+                minSueterTime -= minSueterTime * enabledSueterTime / 100;
+                maxSueterTime -= maxSueterTime * enabledSueterTime / 100;
+            }
 
             StartCoroutine(EnableSueter());
         }
