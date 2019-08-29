@@ -13,6 +13,8 @@ public class PlayerScript : MonoBehaviour
     public float pickingFastTime, pickingSlowTime, energyItemTime;
     float movSpeed;
 
+    public float bottomRayHeight, topRayHeight;
+
     [HideInInspector] public bool pickingFast = false, pickingSlow = false, hasEnergy = false;
 
     float pickingTimer = 0;
@@ -114,11 +116,15 @@ public class PlayerScript : MonoBehaviour
 
     void Interact()
     {
-        Ray ray = new Ray(transform.position + Vector3.up * 0.3f, transform.forward);
+        Ray bottomRay = new Ray(transform.position + Vector3.up * bottomRayHeight, transform.forward);
+        Ray topRay = new Ray(transform.position + Vector3.up * topRayHeight, transform.forward);
+
         RaycastHit hit;
 
-        if(Physics.Raycast(ray, out hit, 5))
+        if(Physics.Raycast(bottomRay, out hit, 3))
         {
+
+
             if (hit.collider.tag == "sueter")
             {
                 SueterInteraction(hit.collider.gameObject);  
@@ -127,6 +133,19 @@ public class PlayerScript : MonoBehaviour
             if (hit.collider.tag == "energy")
             {
                 EnergyItemInteraction(hit.collider.gameObject);
+            }
+        }
+
+        if (Physics.Raycast(topRay, out hit, 3))
+        {
+            if (hit.collider.tag == "phone" && GameManager.Instance.isPhoneRinging)
+            {
+                TelephoneInteraction();
+            }
+
+            if (hit.collider.tag == "tv" && GameManager.Instance.isTVOn)
+            {
+                TVInteraction();
             }
         }
     }
@@ -149,19 +168,21 @@ public class PlayerScript : MonoBehaviour
 
     void TelephoneInteraction()
     {
-        GameManager.Instance.AddCurrentTime(10);
+        GameManager.Instance.AddCurrentTime(100);
         GameManager.Instance.DisableTelephone();
         pickingSlow = true;
     }
 
     void TVInteraction()
     {
+        GameManager.Instance.DisableTV();
         pickingSlow = true;
     }
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawLine(transform.position + Vector3.up * 0.3f, transform.position + Vector3.up * 0.3f + (transform.forward * 3));
+        Gizmos.DrawLine(transform.position + Vector3.up * bottomRayHeight, transform.position + Vector3.up * bottomRayHeight + (transform.forward * 3));
+        Gizmos.DrawLine(transform.position + Vector3.up * topRayHeight, transform.position + Vector3.up * topRayHeight + (transform.forward * 3));
     }
 
     //private void OnTriggerEnter(Collider other)

@@ -27,12 +27,25 @@ public class GameManager : MonoBehaviour
 
     [Header("Enery Item Variables")]
     public Transform energyItemsParent;
-    public float startingMinEnergyItemTime, startingEnergyMaxItemTime;
+    public float startingMinEnergyItemTime, startingMaxEnergyItemTime;
     float minEnergyItemTime, maxEnergyItemTime;
     List<GameObject> energyItemsList = new List<GameObject>();
     List<GameObject> disabledEnergyItemsList = new List<GameObject>();
 
+    [Header("Telephone Variables")]
+    public GameObject telephone;
+    public float startingMinPhoneTime, startingMaxPhoneTime;
+    float minPhoneTime, maxPhoneTime;
+
+    [Header("TV Variables")]
+    public GameObject television;
+    public Material offMaterial, onMaterial;
+    public float startingMinTVTime, startingMaxTVTime;
+    float minTVTime, maxTVTime;
+
     [HideInInspector] public float currentTime, score;
+
+    [HideInInspector] public bool isPhoneRinging = false, isTVOn = false;
 
     void Start()
     {
@@ -44,7 +57,13 @@ public class GameManager : MonoBehaviour
         maxSueterTime = startingMaxSueterTime;
 
         minEnergyItemTime = startingMinEnergyItemTime;
-        maxEnergyItemTime = startingEnergyMaxItemTime;
+        maxEnergyItemTime = startingMaxEnergyItemTime;
+
+        minPhoneTime = startingMinPhoneTime;
+        maxPhoneTime = startingMaxPhoneTime;
+
+        minTVTime = startingMinTVTime;
+        maxTVTime = startingMaxTVTime;
 
         foreach (Transform s in suetersParent)
         {
@@ -64,15 +83,19 @@ public class GameManager : MonoBehaviour
 
         StartCoroutine(EnableSueter());
         StartCoroutine(EnableEnergyItem());
+        StartCoroutine(EnableTelephone());
+        StartCoroutine(EnableTV());
     }
 
     void Update()
     {
-        print(minSueterTime + " min");
-        print(maxSueterTime + " max");
+        //print(minSueterTime + " min");
+        //print(maxSueterTime + " max");
 
-
-        currentTime -= Time.deltaTime;
+        if (!isTVOn)
+            currentTime -= Time.deltaTime;
+        else
+            currentTime -= Time.deltaTime * 2;
 
         if (currentTime <= 0)
             GameOver();
@@ -138,23 +161,46 @@ public class GameManager : MonoBehaviour
         item.SetActive(false);
     }
 
-    public void EnableTelephone()
+    IEnumerator EnableTelephone()
     {
-
+        yield return new WaitForSeconds(Random.Range(minPhoneTime, maxPhoneTime));
+        //particulas
+        //sonido
+        isPhoneRinging = true;
+        print("RING RING");
+        StartCoroutine(EnableTelephone());
     }
 
     public void DisableTelephone()
     {
+        if (isPhoneRinging)
+        {
+            //particulas
+            //sonido
+            isPhoneRinging = false;
+            print("TELF DESACTIVADO");
 
+        }
     }
-    public void EnableTV()
+    IEnumerator EnableTV()
     {
-
+        yield return new WaitForSeconds(Random.Range(minTVTime, maxTVTime));
+        if(!isTVOn)
+        {
+            //cambiar textura
+            //sonido
+            isTVOn = true;
+            print("TELE ON");
+        }
+        StartCoroutine(EnableTV());
     }
 
     public void DisableTV()
     {
-
+        print("TELE OFF");
+        //cambiar textura
+        //sonido
+        isTVOn = false;
     }
 
     public void DisableItem(string type, GameObject item)
