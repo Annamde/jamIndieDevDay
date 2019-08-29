@@ -67,6 +67,7 @@ public class PlayerScript : MonoBehaviour
                 pickingFast = false;
                 pickingTelephone = false;
                 pickingTV = false;
+                GameManager.Instance.AddCurrentTime(addTelephoneTime); //
                 //anim de agacharse
             }
         }
@@ -184,7 +185,7 @@ public class PlayerScript : MonoBehaviour
 
     void TelephoneInteraction()
     {
-        GameManager.Instance.AddCurrentTime(addTelephoneTime);
+        //GameManager.Instance.AddCurrentTime(addTelephoneTime);
         GameManager.Instance.DisableTelephone();
         pickingTelephone = true;
     }
