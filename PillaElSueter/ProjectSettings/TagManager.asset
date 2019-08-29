@@ -6,6 +6,9 @@ TagManager:
   tags:
   - sueter
   - item
+  - energy
+  - phone
+  - tv
   layers:
   - Default
   - TransparentFX
