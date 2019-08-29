@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -13,6 +14,7 @@ public class GameManager : MonoBehaviour
     [Header("HUD")]
     public Text timeText;
     public Text scoreText;
+    public Text highScoreText;
 
     [Header("Constants")]
     public float initialTime;
@@ -43,13 +45,20 @@ public class GameManager : MonoBehaviour
     public float startingMinTVTime, startingMaxTVTime;
     float minTVTime, maxTVTime;
 
-    [HideInInspector] public float currentTime, score;
+    [HideInInspector] public float currentTime;
+    [HideInInspector] public int score, highScore;
 
     [HideInInspector] public bool isPhoneRinging = false, isTVOn = false;
+
+    SaveManager saveManager;
 
     void Start()
     {
         Instance = this;
+
+        saveManager = GetComponent<SaveManager>();
+
+        saveManager.Load();
 
         currentTime = initialTime;
 
@@ -81,6 +90,8 @@ public class GameManager : MonoBehaviour
         disabledSuetersList[rdm].SetActive(true);
         disabledSuetersList.RemoveAt(rdm);
 
+        SetText(highScoreText, highScore);
+
         StartCoroutine(EnableSueter());
        // StartCoroutine(EnableEnergyItem());
        // StartCoroutine(EnableTelephone());
@@ -102,6 +113,12 @@ public class GameManager : MonoBehaviour
 
         SetText(timeText, (int)currentTime);
         SetText(scoreText, score);
+
+        //RESET SAVING
+        if(Input.GetKeyDown(KeyCode.O))
+        {
+            saveManager.ResetSaving();
+        }
     }
 
     void SetText(Text t, float n)
@@ -221,6 +238,7 @@ public class GameManager : MonoBehaviour
 
     void GameOver()
     {
-        print("Game Over");
+        saveManager.Save();
+        SceneManager.LoadScene(0);
     }
 }
