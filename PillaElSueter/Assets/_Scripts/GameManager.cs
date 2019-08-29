@@ -82,15 +82,15 @@ public class GameManager : MonoBehaviour
         disabledSuetersList.RemoveAt(rdm);
 
         StartCoroutine(EnableSueter());
-        StartCoroutine(EnableEnergyItem());
-        StartCoroutine(EnableTelephone());
-        StartCoroutine(EnableTV());
+       // StartCoroutine(EnableEnergyItem());
+       // StartCoroutine(EnableTelephone());
+       // StartCoroutine(EnableTV());
     }
 
     void Update()
     {
-        //print(minSueterTime + " min");
-        //print(maxSueterTime + " max");
+        print(minSueterTime + " min");
+        print(maxSueterTime + " max");
 
         if (!isTVOn)
             currentTime -= Time.deltaTime;
@@ -123,7 +123,7 @@ public class GameManager : MonoBehaviour
             int rdm = Random.Range(0, disabledSuetersList.Count);
             disabledSuetersList[rdm].SetActive(true);
             disabledSuetersList.RemoveAt(rdm);
-            if (minSueterTime >= 1 && maxSueterTime >= 3)
+            if (minSueterTime >= 2 && maxSueterTime >= 3)
             {
                 minSueterTime -= minSueterTime * enabledSueterTime / 100;
                 maxSueterTime -= maxSueterTime * enabledSueterTime / 100;
@@ -167,7 +167,7 @@ public class GameManager : MonoBehaviour
         //particulas
         //sonido
         isPhoneRinging = true;
-        print("RING RING");
+        //print("RING RING");
         StartCoroutine(EnableTelephone());
     }
 
@@ -178,7 +178,7 @@ public class GameManager : MonoBehaviour
             //particulas
             //sonido
             isPhoneRinging = false;
-            print("TELF DESACTIVADO");
+            //print("TELF DESACTIVADO");
 
         }
     }
@@ -190,14 +190,14 @@ public class GameManager : MonoBehaviour
             //cambiar textura
             //sonido
             isTVOn = true;
-            print("TELE ON");
+           // print("TELE ON");
         }
         StartCoroutine(EnableTV());
     }
 
     public void DisableTV()
     {
-        print("TELE OFF");
+        //print("TELE OFF");
         //cambiar textura
         //sonido
         isTVOn = false;
