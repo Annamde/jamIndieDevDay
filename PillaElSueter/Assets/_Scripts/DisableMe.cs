@@ -14,15 +14,19 @@ public class DisableMe : MonoBehaviour
     public ItemType myType;
 
     public float timeToDisable;
-    float timer = 0;
+     public float timer = 0;
 
     void Update()
     {
-        timer += Time.deltaTime;
-        if(timer>timeToDisable)
+        if (myType != ItemType.Telephone || GameManager.Instance.isPhoneRinging)
         {
-            timer = 0;
-            GameManager.Instance.DisableItem( myType.ToString(),this.gameObject);
+
+            timer += Time.deltaTime;
+            if (timer > timeToDisable)
+            {
+                timer = 0;
+                GameManager.Instance.DisableItem(myType.ToString(), this.gameObject);
+            }
         }
     }
 }

@@ -195,6 +195,7 @@ public class GameManager : MonoBehaviour
             //particulas
             //sonido
             isPhoneRinging = false;
+            telephone.GetComponent<DisableMe>().timer = 0;
             print("TELF DESACTIVADO");
 
         }
