@@ -10,12 +10,14 @@ public class PlayerScript : MonoBehaviour
 
     float xMovement, zMovement, yaw;
     public float normalSpeed, energySpeed, lateralSpeed;
-    public float pickingFastTime, pickingSlowTime, energyItemTime;
+    public float pickingFastTime, pickingTelephoneTime, pickingTVTime, energyItemTime;
     float movSpeed;
 
     public float bottomRayHeight, topRayHeight;
 
-    [HideInInspector] public bool pickingFast = false, pickingSlow = false, hasEnergy = false;
+    public float addTelephoneTime = 100;
+
+    [HideInInspector] public bool pickingFast = false, pickingTelephone = false, pickingTV = false, hasEnergy = false;
 
     float pickingTimer = 0;
     float energyTimer = 0;
@@ -30,7 +32,7 @@ public class PlayerScript : MonoBehaviour
 
     private void Update()
     {
-        if (!pickingSlow && !pickingFast)
+        if (!pickingTelephone && !pickingFast && !pickingTV)
         {
             Movement();
             Rotation();
@@ -49,24 +51,38 @@ public class PlayerScript : MonoBehaviour
             {
                 pickingTimer = 0;
                 pickingFast = false;
-                pickingSlow = false;
+                pickingTelephone = false;
+                pickingTV = false;
                 //anim de agacharse
             }
         }
 
-        else
+        else if(pickingTelephone)
         {
             pickingTimer += Time.deltaTime;
 
-            if (pickingTimer > pickingSlowTime)
+            if (pickingTimer > pickingTelephoneTime)
             {
                 pickingTimer = 0;
                 pickingFast = false;
-                pickingSlow = false;
+                pickingTelephone = false;
+                pickingTV = false;
                 //anim de agacharse
             }
         }
+        else if(pickingTV)
+        {
+            pickingTimer += Time.deltaTime;
 
+            if (pickingTimer > pickingTVTime)
+            {
+                pickingTimer = 0;
+                pickingFast = false;
+                pickingTelephone = false;
+                pickingTV = false;
+                //anim de agacharse
+            }
+        }
         if(hasEnergy)
         {
             energyTimer += Time.deltaTime;
@@ -168,15 +184,15 @@ public class PlayerScript : MonoBehaviour
 
     void TelephoneInteraction()
     {
-        GameManager.Instance.AddCurrentTime(100);
+        GameManager.Instance.AddCurrentTime(addTelephoneTime);
         GameManager.Instance.DisableTelephone();
-        pickingSlow = true;
+        pickingTelephone = true;
     }
 
     void TVInteraction()
     {
         GameManager.Instance.DisableTV();
-        pickingSlow = true;
+        pickingTV = true;
     }
 
     private void OnDrawGizmos()

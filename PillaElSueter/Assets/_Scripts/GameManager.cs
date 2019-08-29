@@ -94,14 +94,14 @@ public class GameManager : MonoBehaviour
 
         StartCoroutine(EnableSueter());
        // StartCoroutine(EnableEnergyItem());
-       // StartCoroutine(EnableTelephone());
-       // StartCoroutine(EnableTV());
+        StartCoroutine(EnableTelephone());
+        StartCoroutine(EnableTV());
     }
 
     void Update()
     {
-        print(minSueterTime + " min");
-        print(maxSueterTime + " max");
+        //print(minSueterTime + " min");
+        //print(maxSueterTime + " max");
 
         if (!isTVOn)
             currentTime -= Time.deltaTime;
@@ -184,7 +184,7 @@ public class GameManager : MonoBehaviour
         //particulas
         //sonido
         isPhoneRinging = true;
-        //print("RING RING");
+        print("RING RING");
         StartCoroutine(EnableTelephone());
     }
 
@@ -195,7 +195,7 @@ public class GameManager : MonoBehaviour
             //particulas
             //sonido
             isPhoneRinging = false;
-            //print("TELF DESACTIVADO");
+            print("TELF DESACTIVADO");
 
         }
     }
@@ -207,14 +207,14 @@ public class GameManager : MonoBehaviour
             //cambiar textura
             //sonido
             isTVOn = true;
-           // print("TELE ON");
+            print("TV ON");
         }
         StartCoroutine(EnableTV());
     }
 
     public void DisableTV()
     {
-        //print("TELE OFF");
+        print("TV OFF");
         //cambiar textura
         //sonido
         isTVOn = false;

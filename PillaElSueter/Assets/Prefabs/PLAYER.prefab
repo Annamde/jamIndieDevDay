@@ -1086,11 +1086,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e183048d7b47af74bae48212bb6e5d18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movSpeed: 12
+  normalSpeed: 17
+  energySpeed: 30
   lateralSpeed: 120
-  pickingTime: 0.5
-  pickingItem: 0
-  pickingSueter: 0
+  pickingFastTime: 0.5
+  pickingTelephoneTime: 0
+  pickingTVTime: 0
+  energyItemTime: 5
+  bottomRayHeight: 0.3
+  topRayHeight: 2.2
+  addTelephoneTime: 100
+  pickingFast: 0
+  pickingTelephone: 0
+  pickingTV: 0
+  hasEnergy: 0
 --- !u!1 &1022197111655357054
 GameObject:
   m_ObjectHideFlags: 0
@@ -1102,6 +1111,7 @@ GameObject:
   - component: {fileID: 1022197111655357025}
   - component: {fileID: 1022197111655357024}
   - component: {fileID: 1022197111655357055}
+  - component: {fileID: 3891280430676632042}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1173,6 +1183,19 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1022197111655357054}
   m_Enabled: 1
+--- !u!65 &3891280430676632042
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1022197111655357054}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 2, z: 2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1023785250530526990
 GameObject:
   m_ObjectHideFlags: 0
