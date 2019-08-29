@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 5890309874247550774}
   - component: {fileID: 6469865272858274956}
   m_Layer: 0
-  m_Name: Item
-  m_TagString: item
+  m_Name: Energy
+  m_TagString: energy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58,6 +58,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3991cf2386bdb149ad4c2f4bc1685da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myType: 2
   timeToDisable: 10
 --- !u!1 &342411138509479668
 GameObject:
@@ -116,7 +117,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c42dd779d58712443adcb6e0c6b45b88, type: 2}
+  - {fileID: 2100000, guid: 8318ec3fc865b8d4cb49820c5828b55b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

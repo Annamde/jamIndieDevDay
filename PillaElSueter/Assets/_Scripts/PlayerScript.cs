@@ -9,14 +9,18 @@ public class PlayerScript : MonoBehaviour
     Camera cam;
 
     float xMovement, zMovement, yaw;
-    public float movSpeed, lateralSpeed, pickingTime;
+    public float normalSpeed, energySpeed, lateralSpeed;
+    public float pickingFastTime, pickingSlowTime, energyItemTime;
+    float movSpeed;
 
-    [HideInInspector] public bool pickingItem = false, pickingSueter = false;
+    [HideInInspector] public bool pickingFast = false, pickingSlow = false, hasEnergy = false;
 
     float pickingTimer = 0;
+    float energyTimer = 0;
 
     private void Start()
     {
+        movSpeed = normalSpeed;
         characterController = GetComponent<CharacterController>();
         cam = Camera.main;
         yaw = transform.localRotation.eulerAngles.y;
@@ -24,7 +28,7 @@ public class PlayerScript : MonoBehaviour
 
     private void Update()
     {
-        if (!pickingSueter && !pickingItem)
+        if (!pickingSlow && !pickingFast)
         {
             Movement();
             Rotation();
@@ -35,16 +39,41 @@ public class PlayerScript : MonoBehaviour
             }
         }
 
+        else if (pickingFast)
+        {
+            pickingTimer += Time.deltaTime;
+
+            if(pickingTimer > pickingFastTime)
+            {
+                pickingTimer = 0;
+                pickingFast = false;
+                pickingSlow = false;
+                //anim de agacharse
+            }
+        }
+
         else
         {
             pickingTimer += Time.deltaTime;
 
-            if(pickingTimer > pickingTime)
+            if (pickingTimer > pickingSlowTime)
             {
                 pickingTimer = 0;
-                pickingItem = false;
-                pickingSueter = false;
+                pickingFast = false;
+                pickingSlow = false;
                 //anim de agacharse
+            }
+        }
+
+        if(hasEnergy)
+        {
+            energyTimer += Time.deltaTime;
+
+            if(energyTimer>energyItemTime)
+            {
+                energyTimer = 0;
+                hasEnergy = false;
+                movSpeed = normalSpeed;
             }
         }
     }
@@ -92,29 +121,42 @@ public class PlayerScript : MonoBehaviour
         {
             if (hit.collider.tag == "sueter")
             {
-                PickSueter(hit.collider.gameObject);  
+                SueterInteraction(hit.collider.gameObject);  
             }
 
-            if (hit.collider.tag == "item")
+            if (hit.collider.tag == "energy")
             {
-                PickItem(hit.collider.gameObject);
+                EnergyItemInteraction(hit.collider.gameObject);
             }
         }
     }
 
-    void PickSueter(GameObject sueter)
+    void SueterInteraction(GameObject sueter)
     {
-        GameManager.score += 50; //eso luego se pone con una variable y eso, pero era pa ponerle algo
+        GameManager.Instance.score += 50; //eso luego se pone con una variable y eso, pero era pa ponerle algo
         GameManager.Instance.AddCurrentTime(2);
         GameManager.Instance.DisableSueter(sueter);
-        pickingSueter = true;
+        pickingFast = true;
     }
 
-    void PickItem(GameObject item)
+    void EnergyItemInteraction(GameObject item)
+    {
+        movSpeed = energySpeed;
+        pickingFast = true;
+        hasEnergy = true;
+        GameManager.Instance.DisableEnergyItem(item);
+    }
+
+    void TelephoneInteraction()
     {
         GameManager.Instance.AddCurrentTime(10);
-        GameManager.Instance.DisableItem(item);
-        pickingItem = true;
+        GameManager.Instance.DisableTelephone();
+        pickingSlow = true;
+    }
+
+    void TVInteraction()
+    {
+        pickingSlow = true;
     }
 
     private void OnDrawGizmos()

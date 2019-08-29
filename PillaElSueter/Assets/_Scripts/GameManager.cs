@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Constants")]
     public float initialTime;
-    public float enabledSueterTime; 
+    public float enabledSueterTime;
 
     [Header("Sueter Variables")]
     public Transform suetersParent; //empty que contiene todos los sueters
@@ -25,15 +25,14 @@ public class GameManager : MonoBehaviour
     List<GameObject> suetersList = new List<GameObject>(); //lista de sueters
     List<GameObject> disabledSuetersList = new List<GameObject>(); //lista de sueters desactivados
 
-    [Header("Item Variables")]
-    public Transform itemsParent;
-    public float startingMinItemTime, startingMaxItemTime;
-    float minItemTime, maxItemTime;
-    List<GameObject> itemsList = new List<GameObject>();
-    List<GameObject> disabledItemsList = new List<GameObject>();
+    [Header("Enery Item Variables")]
+    public Transform energyItemsParent;
+    public float startingMinEnergyItemTime, startingEnergyMaxItemTime;
+    float minEnergyItemTime, maxEnergyItemTime;
+    List<GameObject> energyItemsList = new List<GameObject>();
+    List<GameObject> disabledEnergyItemsList = new List<GameObject>();
 
-    public float currentTime;
-    static public int score;
+    [HideInInspector] public float currentTime, score;
 
     void Start()
     {
@@ -44,8 +43,8 @@ public class GameManager : MonoBehaviour
         minSueterTime = startingMinSueterTime;
         maxSueterTime = startingMaxSueterTime;
 
-        minItemTime = startingMinItemTime;
-        maxItemTime = startingMaxItemTime;
+        minEnergyItemTime = startingMinEnergyItemTime;
+        maxEnergyItemTime = startingEnergyMaxItemTime;
 
         foreach (Transform s in suetersParent)
         {
@@ -53,10 +52,10 @@ public class GameManager : MonoBehaviour
             DisableSueter(s.gameObject);
         }
 
-        foreach (Transform i in itemsParent)
+        foreach (Transform e in energyItemsParent)
         {
-            itemsList.Add(i.gameObject);
-            DisableItem(i.gameObject);
+            energyItemsList.Add(e.gameObject);
+            DisableEnergyItem(e.gameObject);
         }
 
         int rdm = Random.Range(0, disabledSuetersList.Count);
@@ -64,13 +63,13 @@ public class GameManager : MonoBehaviour
         disabledSuetersList.RemoveAt(rdm);
 
         StartCoroutine(EnableSueter());
-        StartCoroutine(EnableItem());
+        StartCoroutine(EnableEnergyItem());
     }
 
     void Update()
     {
         print(minSueterTime + " min");
-        print(maxSueterTime+" max");
+        print(maxSueterTime + " max");
 
 
         currentTime -= Time.deltaTime;
@@ -120,23 +119,58 @@ public class GameManager : MonoBehaviour
         sueter.SetActive(false);
     }
 
-    IEnumerator EnableItem()
+    IEnumerator EnableEnergyItem()
     {
-        yield return new WaitForSeconds(Random.Range(minItemTime, maxItemTime));
-        if (disabledItemsList.Count > 0)
+        yield return new WaitForSeconds(Random.Range(minEnergyItemTime, maxEnergyItemTime));
+        if (disabledEnergyItemsList.Count > 0 && !player.hasEnergy)
         {
-            int rdm = Random.Range(0, disabledItemsList.Count);
-            disabledItemsList[rdm].SetActive(true);
-            disabledItemsList.RemoveAt(rdm);
+            int rdm = Random.Range(0, disabledEnergyItemsList.Count);
+            disabledEnergyItemsList[rdm].SetActive(true);
+            disabledEnergyItemsList.RemoveAt(rdm);
 
-            StartCoroutine(EnableItem());
         }
+        StartCoroutine(EnableEnergyItem());
     }
 
-    public void DisableItem(GameObject item)
+    public void DisableEnergyItem(GameObject item)
     {
-        disabledItemsList.Add(item);
+        disabledEnergyItemsList.Add(item);
         item.SetActive(false);
+    }
+
+    public void EnableTelephone()
+    {
+
+    }
+
+    public void DisableTelephone()
+    {
+
+    }
+    public void EnableTV()
+    {
+
+    }
+
+    public void DisableTV()
+    {
+
+    }
+
+    public void DisableItem(string type, GameObject item)
+    {
+        switch (type)
+        {
+            case "TV":
+                DisableTV();
+                break;
+            case "Telephone":
+                DisableTelephone();
+                break;
+            case "EnergyDrink":
+                DisableEnergyItem(item);
+                break;
+        }
     }
 
     void GameOver()

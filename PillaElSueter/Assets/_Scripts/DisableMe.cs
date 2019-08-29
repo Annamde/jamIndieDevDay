@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class DisableMe : MonoBehaviour
 {
+    public enum ItemType
+    {
+        TV,
+        Telephone,
+        EnergyDrink
+    }
+
+    public ItemType myType;
+
     public float timeToDisable;
     float timer = 0;
 
@@ -13,7 +22,7 @@ public class DisableMe : MonoBehaviour
         if(timer>timeToDisable)
         {
             timer = 0;
-            GameManager.Instance.DisableItem(this.gameObject);
+            GameManager.Instance.DisableItem( myType.ToString(),this.gameObject);
         }
     }
 }
