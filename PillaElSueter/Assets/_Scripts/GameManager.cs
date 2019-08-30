@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public Text timeText;
     public Text scoreText;
     public Text highScoreText;
+    public GameObject gameOverPanel;
 
     [Header("Constants")]
     public float initialTime;
@@ -49,6 +50,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public int score, highScore;
 
     [HideInInspector] public bool isPhoneRinging = false, isTVOn = false;
+    int lastPos = -1;
+    [HideInInspector] public bool stopGame = false;
 
     SaveManager saveManager;
 
@@ -93,7 +96,7 @@ public class GameManager : MonoBehaviour
         SetText(highScoreText, highScore);
 
         StartCoroutine(EnableSueter());
-       // StartCoroutine(EnableEnergyItem());
+        // StartCoroutine(EnableEnergyItem());
         StartCoroutine(EnableTelephone());
         StartCoroutine(EnableTV());
     }
@@ -102,22 +105,25 @@ public class GameManager : MonoBehaviour
     {
         //print(minSueterTime + " min");
         //print(maxSueterTime + " max");
-
-        if (!isTVOn)
-            currentTime -= Time.deltaTime;
-        else
-            currentTime -= Time.deltaTime * 2;
-
-        if (currentTime <= 0)
-            GameOver();
-
-        SetText(timeText, (int)currentTime);
-        SetText(scoreText, score);
-
-        //RESET SAVING
-        if(Input.GetKeyDown(KeyCode.O))
+        if (!stopGame)
         {
-            saveManager.ResetSaving();
+            if (!isTVOn)
+                currentTime -= Time.deltaTime;
+            else
+                currentTime -= Time.deltaTime * 2;
+
+            if (currentTime <= 0)
+                GameOver();
+
+            SetText(timeText, (int)currentTime);
+            SetText(scoreText, score);
+
+            //RESET SAVING
+            if (Input.GetKeyDown(KeyCode.O))
+            {
+                saveManager.ResetSaving();
+            }
+
         }
     }
 
@@ -138,6 +144,14 @@ public class GameManager : MonoBehaviour
         if (disabledSuetersList.Count > 0)
         {
             int rdm = Random.Range(0, disabledSuetersList.Count);
+
+            while (rdm == lastPos)
+            {
+                rdm = Random.Range(0, disabledSuetersList.Count);
+            }
+
+            lastPos = rdm;
+
             disabledSuetersList[rdm].SetActive(true);
             disabledSuetersList.RemoveAt(rdm);
             if (minSueterTime >= 2 && maxSueterTime >= 3)
@@ -150,7 +164,7 @@ public class GameManager : MonoBehaviour
         }
 
         else
-            StartCoroutine(EnableSueter());
+            GameOver();
     }
 
     public void DisableSueter(GameObject sueter)
@@ -203,7 +217,7 @@ public class GameManager : MonoBehaviour
     IEnumerator EnableTV()
     {
         yield return new WaitForSeconds(Random.Range(minTVTime, maxTVTime));
-        if(!isTVOn)
+        if (!isTVOn)
         {
             //cambiar textura
             //sonido
@@ -240,6 +254,12 @@ public class GameManager : MonoBehaviour
     void GameOver()
     {
         saveManager.Save();
-        SceneManager.LoadScene(0);
+        gameOverPanel.SetActive(true);
+        stopGame = true;
+    }
+
+    public void LoadScene(int scene)
+    {
+        SceneManager.LoadScene(scene);
     }
 }

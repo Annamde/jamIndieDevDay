@@ -43,72 +43,76 @@ public class PlayerScript : MonoBehaviour
 
     private void Update()
     {
-        if (!pickingTelephone && !pickingFast && !pickingTV)
+        if (!GameManager.Instance.stopGame)
         {
-            Movement();
-            Rotation();
 
-            if (Input.GetButtonDown("Action"))
+            if (!pickingTelephone && !pickingFast && !pickingTV)
             {
-                Interact();
+                Movement();
+                Rotation();
+
+                if (Input.GetButtonDown("Action"))
+                {
+                    Interact();
+                }
             }
-        }
 
-        else if (pickingFast)
-        {
-            pickingTimer += Time.deltaTime;
-
-            if (pickingTimer > pickingFastTime)
+            else if (pickingFast)
             {
-                pickingTimer = 0;
-                pickingFast = false;
-                pickingTelephone = false;
-                pickingTV = false;
-                //anim de agacharse
+                pickingTimer += Time.deltaTime;
+
+                if (pickingTimer > pickingFastTime)
+                {
+                    pickingTimer = 0;
+                    pickingFast = false;
+                    pickingTelephone = false;
+                    pickingTV = false;
+                    //anim de agacharse
+                }
             }
-        }
 
-        else if (pickingTelephone)
-        {
-            TelephoneBar.enabled = true;
-            pickingTimer += Time.deltaTime;
-            TelephoneBar.fillAmount = (pickingTimer * 100 / pickingTelephoneTime) / 100;
-
-            if (pickingTimer > pickingTelephoneTime)
+            else if (pickingTelephone)
             {
-                pickingTimer = 0;
-                pickingFast = false;
-                pickingTelephone = false;
-                pickingTV = false;
-                GameManager.Instance.AddCurrentTime(addTelephoneTime); //
-                TelephoneBar.fillAmount = 1;
-                TelephoneBar.enabled = false;
+                TelephoneBar.enabled = true;
+                pickingTimer += Time.deltaTime;
+                TelephoneBar.fillAmount = (pickingTimer * 100 / pickingTelephoneTime) / 100;
+
+                if (pickingTimer > pickingTelephoneTime)
+                {
+                    pickingTimer = 0;
+                    pickingFast = false;
+                    pickingTelephone = false;
+                    pickingTV = false;
+                    GameManager.Instance.AddCurrentTime(addTelephoneTime); //
+                    TelephoneBar.fillAmount = 1;
+                    TelephoneBar.enabled = false;
+                }
             }
-        }
-        else if (pickingTV)
-        {
-            tvBar.enabled = true;
-            pickingTimer += Time.deltaTime;
-            tvBar.fillAmount = (pickingTimer * 100 / pickingTVTime) / 100;
-            if (pickingTimer > pickingTVTime)
+            else if (pickingTV)
             {
-                pickingTimer = 0;
-                pickingFast = false;
-                pickingTelephone = false;
-                pickingTV = false;
-                tvBar.fillAmount = 1;
-                tvBar.enabled = false;
+                tvBar.enabled = true;
+                pickingTimer += Time.deltaTime;
+                tvBar.fillAmount = (pickingTimer * 100 / pickingTVTime) / 100;
+                if (pickingTimer > pickingTVTime)
+                {
+                    pickingTimer = 0;
+                    pickingFast = false;
+                    pickingTelephone = false;
+                    pickingTV = false;
+                    tvBar.fillAmount = 1;
+                    tvBar.enabled = false;
+                }
             }
-        }
-        if (hasEnergy)
-        {
-            energyTimer += Time.deltaTime;
-
-            if (energyTimer > energyItemTime)
+            if (hasEnergy)
             {
-                energyTimer = 0;
-                hasEnergy = false;
-                movSpeed = normalSpeed;
+                energyTimer += Time.deltaTime;
+
+                if (energyTimer > energyItemTime)
+                {
+                    energyTimer = 0;
+                    hasEnergy = false;
+                    movSpeed = normalSpeed;
+                }
             }
         }
     }
