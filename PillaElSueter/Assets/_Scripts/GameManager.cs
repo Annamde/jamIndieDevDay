@@ -183,6 +183,7 @@ public class GameManager : MonoBehaviour
         {
             int rdm = Random.Range(0, disabledEnergyItemsList.Count);
             disabledEnergyItemsList[rdm].SetActive(true);
+            disabledEnergyItemsList[rdm].GetComponent<AudioSource>().Play();
             disabledEnergyItemsList.RemoveAt(rdm);
 
         }
@@ -223,7 +224,7 @@ public class GameManager : MonoBehaviour
         if (!isTVOn)
         {
             //cambiar textura
-            //sonido
+            television.GetComponent<AudioSource>().Play();
             isTVOn = true;
             print("TV ON");
         }
@@ -234,7 +235,7 @@ public class GameManager : MonoBehaviour
     {
         print("TV OFF");
         //cambiar textura
-        //sonido
+        television.GetComponent<AudioSource>().Stop();
         isTVOn = false;
     }
 

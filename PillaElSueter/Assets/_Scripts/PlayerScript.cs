@@ -27,10 +27,13 @@ public class PlayerScript : MonoBehaviour
     float pickingTimer = 0;
     float energyTimer = 0;
 
+    AudioSource audiosource;
+
     private void Start()
     {
         movSpeed = normalSpeed;
         characterController = GetComponent<CharacterController>();
+        audiosource = GetComponent<AudioSource>();
         cam = Camera.main;
         yaw = transform.localRotation.eulerAngles.y;
 
@@ -197,6 +200,7 @@ public class PlayerScript : MonoBehaviour
 
     void EnergyItemInteraction(GameObject item)
     {
+        audiosource.Play();
         movSpeed = energySpeed;
         pickingFast = true;
         hasEnergy = true;
