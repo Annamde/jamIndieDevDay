@@ -54,12 +54,14 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public bool stopGame = false;
 
     SaveManager saveManager;
+    AudioSource audiosource;
 
     void Start()
     {
         Instance = this;
 
         saveManager = GetComponent<SaveManager>();
+        audiosource = GetComponent<AudioSource>();
 
         saveManager.Load();
 
@@ -152,6 +154,7 @@ public class GameManager : MonoBehaviour
 
             lastPos = rdm;
 
+            audiosource.Play();
             disabledSuetersList[rdm].SetActive(true);
             disabledSuetersList.RemoveAt(rdm);
             if (minSueterTime >= 2 && maxSueterTime >= 3)
@@ -196,7 +199,7 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(Random.Range(minPhoneTime, maxPhoneTime));
         //particulas
-        //sonido
+        telephone.GetComponent<AudioSource>().Play();
         isPhoneRinging = true;
         print("RING RING");
         StartCoroutine(EnableTelephone());
@@ -207,7 +210,7 @@ public class GameManager : MonoBehaviour
         if (isPhoneRinging)
         {
             //particulas
-            //sonido
+            telephone.GetComponent<AudioSource>().Stop();
             isPhoneRinging = false;
             telephone.GetComponent<DisableMe>().timer = 0;
             print("TELF DESACTIVADO");
@@ -256,6 +259,7 @@ public class GameManager : MonoBehaviour
         saveManager.Save();
         gameOverPanel.SetActive(true);
         stopGame = true;
+        StopAllCoroutines();
     }
 
     public void LoadScene(int scene)
