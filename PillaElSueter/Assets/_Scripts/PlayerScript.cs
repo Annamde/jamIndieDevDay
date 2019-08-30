@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -17,6 +18,10 @@ public class PlayerScript : MonoBehaviour
 
     public float addTelephoneTime = 100;
 
+    [Header("HUD items")]
+    public Image tvBar;
+    public Image TelephoneBar;
+
     [HideInInspector] public bool pickingFast = false, pickingTelephone = false, pickingTV = false, hasEnergy = false;
 
     float pickingTimer = 0;
@@ -28,6 +33,12 @@ public class PlayerScript : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         cam = Camera.main;
         yaw = transform.localRotation.eulerAngles.y;
+
+        tvBar.enabled = false;
+        tvBar.fillAmount = 1;
+
+        TelephoneBar.enabled = false;
+        TelephoneBar.fillAmount = 1;
     }
 
     private void Update()
@@ -37,7 +48,7 @@ public class PlayerScript : MonoBehaviour
             Movement();
             Rotation();
 
-            if(Input.GetButtonDown("Action"))
+            if (Input.GetButtonDown("Action"))
             {
                 Interact();
             }
@@ -47,7 +58,7 @@ public class PlayerScript : MonoBehaviour
         {
             pickingTimer += Time.deltaTime;
 
-            if(pickingTimer > pickingFastTime)
+            if (pickingTimer > pickingFastTime)
             {
                 pickingTimer = 0;
                 pickingFast = false;
@@ -57,9 +68,11 @@ public class PlayerScript : MonoBehaviour
             }
         }
 
-        else if(pickingTelephone)
+        else if (pickingTelephone)
         {
+            TelephoneBar.enabled = true;
             pickingTimer += Time.deltaTime;
+            TelephoneBar.fillAmount = (pickingTimer * 100 / pickingTelephoneTime) / 100;
 
             if (pickingTimer > pickingTelephoneTime)
             {
@@ -68,27 +81,30 @@ public class PlayerScript : MonoBehaviour
                 pickingTelephone = false;
                 pickingTV = false;
                 GameManager.Instance.AddCurrentTime(addTelephoneTime); //
-                //anim de agacharse
+                TelephoneBar.fillAmount = 1;
+                TelephoneBar.enabled = false;
             }
         }
-        else if(pickingTV)
+        else if (pickingTV)
         {
+            tvBar.enabled = true;
             pickingTimer += Time.deltaTime;
-
+            tvBar.fillAmount = (pickingTimer * 100 / pickingTVTime) / 100;
             if (pickingTimer > pickingTVTime)
             {
                 pickingTimer = 0;
                 pickingFast = false;
                 pickingTelephone = false;
                 pickingTV = false;
-                //anim de agacharse
+                tvBar.fillAmount = 1;
+                tvBar.enabled = false;
             }
         }
-        if(hasEnergy)
+        if (hasEnergy)
         {
             energyTimer += Time.deltaTime;
 
-            if(energyTimer>energyItemTime)
+            if (energyTimer > energyItemTime)
             {
                 energyTimer = 0;
                 hasEnergy = false;
@@ -138,13 +154,13 @@ public class PlayerScript : MonoBehaviour
 
         RaycastHit hit;
 
-        if(Physics.Raycast(bottomRay, out hit, 3))
+        if (Physics.Raycast(bottomRay, out hit, 3))
         {
 
 
             if (hit.collider.tag == "sueter")
             {
-                SueterInteraction(hit.collider.gameObject);  
+                SueterInteraction(hit.collider.gameObject);
             }
 
             if (hit.collider.tag == "energy")
@@ -185,7 +201,7 @@ public class PlayerScript : MonoBehaviour
 
     void TelephoneInteraction()
     {
-        //GameManager.Instance.AddCurrentTime(addTelephoneTime);
+        // GameManager.Instance.AddCurrentTime(addTelephoneTime);
         GameManager.Instance.DisableTelephone();
         pickingTelephone = true;
     }
