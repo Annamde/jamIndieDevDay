@@ -98,7 +98,7 @@ public class GameManager : MonoBehaviour
         SetText(highScoreText, highScore);
 
         StartCoroutine(EnableSueter());
-        // StartCoroutine(EnableEnergyItem());
+        StartCoroutine(EnableEnergyItem());
         StartCoroutine(EnableTelephone());
         StartCoroutine(EnableTV());
     }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.4465781, g: 0.4964136, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657767, g: 0.4964128, b: 0.57481575, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -343,108 +343,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &81800464 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1022197111255588524, guid: 6a6d517641a28ff4e883b82eafc04dbb,
-    type: 3}
-  m_PrefabInstance: {fileID: 1022197111568707632}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &81800468
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 81800464}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 6726e1f61ffe03a499950e92c3346963, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!114 &85728562 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4579116818228833871, guid: cfaf6d855ed93ab4480f01467e8a9663,
@@ -2009,12 +1907,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!4 &760118981 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1022197111655357025, guid: 6a6d517641a28ff4e883b82eafc04dbb,
-    type: 3}
-  m_PrefabInstance: {fileID: 1022197111568707632}
-  m_PrefabAsset: {fileID: 0}
 --- !u!20 &760118984 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 1022197111655357024, guid: 6a6d517641a28ff4e883b82eafc04dbb,
@@ -2414,8 +2306,8 @@ MonoBehaviour:
   startingMinSueterTime: 5
   startingMaxSueterTime: 10
   energyItemsParent: {fileID: 1966836053}
-  startingMinEnergyItemTime: 2
-  startingMaxEnergyItemTime: 0
+  startingMinEnergyItemTime: 5
+  startingMaxEnergyItemTime: 20
   telephone: {fileID: 1183451994}
   startingMinPhoneTime: 30
   startingMaxPhoneTime: 40
@@ -2544,7 +2436,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1022197111568707632}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 81800464}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e183048d7b47af74bae48212bb6e5d18, type: 3}
@@ -3175,36 +3067,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6160616989245918563}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1218850549
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1218850550}
-  m_Layer: 0
-  m_Name: CameraWorldPosition
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1218850550
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1218850549}
-  m_LocalRotation: {x: 0.017409002, y: 0.9403232, z: -0.3363336, w: -0.048672207}
-  m_LocalPosition: {x: -0.00008380413, y: -0.0001239919, z: -0.00015115397}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 760118981}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 39.111, y: 187.64699, z: 4.841}
 --- !u!1 &1389898899
 GameObject:
   m_ObjectHideFlags: 0
@@ -4665,31 +4527,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1022197111255588525, guid: 6a6d517641a28ff4e883b82eafc04dbb,
         type: 3}
-      propertyPath: addTelephoneTime
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 1022197111255588525, guid: 6a6d517641a28ff4e883b82eafc04dbb,
-        type: 3}
-      propertyPath: pickingSlowTime
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1022197111255588525, guid: 6a6d517641a28ff4e883b82eafc04dbb,
-        type: 3}
-      propertyPath: pickingTelephoneTime
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1022197111255588525, guid: 6a6d517641a28ff4e883b82eafc04dbb,
-        type: 3}
-      propertyPath: pickingTVTime
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1022197111255588525, guid: 6a6d517641a28ff4e883b82eafc04dbb,
-        type: 3}
-      propertyPath: normalSpeed
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 1022197111255588525, guid: 6a6d517641a28ff4e883b82eafc04dbb,
-        type: 3}
       propertyPath: tvBar
       value: 
       objectReference: {fileID: 797236655}
@@ -4698,6 +4535,21 @@ PrefabInstance:
       propertyPath: TelephoneBar
       value: 
       objectReference: {fileID: 1002781865}
+    - target: {fileID: 1022197111255588525, guid: 6a6d517641a28ff4e883b82eafc04dbb,
+        type: 3}
+      propertyPath: energyItemTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1022197111255588525, guid: 6a6d517641a28ff4e883b82eafc04dbb,
+        type: 3}
+      propertyPath: addTelephoneTime
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1022197111255588525, guid: 6a6d517641a28ff4e883b82eafc04dbb,
+        type: 3}
+      propertyPath: energySpeed
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 1022197111255588496, guid: 6a6d517641a28ff4e883b82eafc04dbb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4760,14 +4612,19 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 370782ec807900049b5d554afd4b4a71, type: 2}
     - target: {fileID: 3891280430676632042, guid: 6a6d517641a28ff4e883b82eafc04dbb,
         type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1425950782711830097, guid: 6a6d517641a28ff4e883b82eafc04dbb,
         type: 3}
-      propertyPath: worldPos
-      value: 
-      objectReference: {fileID: 1218850550}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5084789966495444153, guid: 6a6d517641a28ff4e883b82eafc04dbb,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a6d517641a28ff4e883b82eafc04dbb, type: 3}
 --- !u!1001 &5020071554162000673

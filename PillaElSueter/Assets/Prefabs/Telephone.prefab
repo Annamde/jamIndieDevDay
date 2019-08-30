@@ -310,7 +310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myType: 1
-  timeToDisable: 20
+  timeToDisable: 15
   timer: 0
 --- !u!65 &5020071555193145468
 BoxCollider:
