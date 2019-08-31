@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
     public GameObject telephone;
     public float startingMinPhoneTime, startingMaxPhoneTime;
     float minPhoneTime, maxPhoneTime;
+    public ParticleSystem particulasTelefono;
 
     [Header("TV Variables")]
     public GameObject television;
@@ -104,6 +105,8 @@ public class GameManager : MonoBehaviour
         StartCoroutine(EnableEnergyItem());
         StartCoroutine(EnableTelephone());
         StartCoroutine(EnableTV());
+
+        particulasTelefono.Stop();
     }
 
     void Update()
@@ -203,6 +206,7 @@ public class GameManager : MonoBehaviour
         //particulas
         telephone.GetComponent<AudioSource>().Play();
         isPhoneRinging = true;
+        particulasTelefono.Play();
         print("RING RING");
         StartCoroutine(EnableTelephone());
     }
@@ -215,6 +219,7 @@ public class GameManager : MonoBehaviour
             telephone.GetComponent<AudioSource>().Stop();
             isPhoneRinging = false;
             telephone.GetComponent<DisableMe>().timer = 0;
+            particulasTelefono.Stop();
             print("TELF DESACTIVADO");
 
         }

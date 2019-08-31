@@ -4727,6 +4727,7 @@ MonoBehaviour:
   telephone: {fileID: 1183451994}
   startingMinPhoneTime: 30
   startingMaxPhoneTime: 40
+  particulasTelefono: {fileID: 2104087583}
   television: {fileID: 2095328466}
   onMaterial: {fileID: 134003284}
   startingMinTVTime: 15
@@ -9563,6 +9564,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1043346125376623665, guid: 80c914b1b0e4a154ba1d5daf792b2d16,
     type: 3}
   m_PrefabInstance: {fileID: 1043346123822905570}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &2104087583 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 9216389299819148790, guid: 55f93773620e0674782b030862a38a2d,
+    type: 3}
+  m_PrefabInstance: {fileID: 5020071554162000673}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2115852169
 PrefabInstance:
