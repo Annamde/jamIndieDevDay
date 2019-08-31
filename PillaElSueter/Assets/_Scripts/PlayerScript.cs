@@ -29,6 +29,7 @@ public class PlayerScript : MonoBehaviour
 
     AudioSource audiosource;
     public AudioClip pickEnergySound, pickSueterSound;
+    public Animator animator;
 
     private void Start()
     {
@@ -130,6 +131,7 @@ public class PlayerScript : MonoBehaviour
 
         if (Mathf.Abs(xMovement) > 0 || Mathf.Abs(zMovement) > 0)
         {
+            animator.SetBool("walking", true);
             Vector3 forward = transform.forward;
             forward.y = 0;
             forward.Normalize();
@@ -139,6 +141,9 @@ public class PlayerScript : MonoBehaviour
 
             movement = forward * zMovement + right * xMovement;
         }
+
+        else
+            animator.SetBool("walking", false);
 
         if (!characterController.isGrounded)
             movement.y = Physics.gravity.y * Time.deltaTime * 10;
@@ -193,6 +198,7 @@ public class PlayerScript : MonoBehaviour
 
     void SueterInteraction(GameObject sueter)
     {
+        animator.SetTrigger("pick");
         audiosource.PlayOneShot(pickSueterSound);
         GameManager.Instance.score += 50; //eso luego se pone con una variable y eso, pero era pa ponerle algo
         GameManager.Instance.AddCurrentTime(2);
@@ -202,6 +208,7 @@ public class PlayerScript : MonoBehaviour
 
     void EnergyItemInteraction(GameObject item)
     {
+        animator.SetTrigger("pick");
         audiosource.PlayOneShot(pickEnergySound);
         movSpeed = energySpeed;
         pickingFast = true;
