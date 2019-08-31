@@ -117,6 +117,7 @@ public class PlayerScript : MonoBehaviour
                     energyTimer = 0;
                     hasEnergy = false;
                     movSpeed = normalSpeed;
+                    animator.SetBool("run", false);
                 }
             }
         }
@@ -132,6 +133,9 @@ public class PlayerScript : MonoBehaviour
         if (Mathf.Abs(xMovement) > 0 || Mathf.Abs(zMovement) > 0)
         {
             animator.SetBool("walking", true);
+            if(hasEnergy)
+                animator.SetBool("run", true);
+
             Vector3 forward = transform.forward;
             forward.y = 0;
             forward.Normalize();
@@ -198,6 +202,8 @@ public class PlayerScript : MonoBehaviour
 
     void SueterInteraction(GameObject sueter)
     {
+        animator.SetBool("walking", false);
+        animator.SetBool("run", false);
         animator.SetTrigger("pick");
         audiosource.PlayOneShot(pickSueterSound);
         GameManager.Instance.score += 50; //eso luego se pone con una variable y eso, pero era pa ponerle algo
@@ -208,16 +214,21 @@ public class PlayerScript : MonoBehaviour
 
     void EnergyItemInteraction(GameObject item)
     {
+        animator.SetBool("walking", false);
+        animator.SetBool("run", false);
         animator.SetTrigger("pick");
         audiosource.PlayOneShot(pickEnergySound);
         movSpeed = energySpeed;
         pickingFast = true;
         hasEnergy = true;
+        animator.SetBool("run", true);
         GameManager.Instance.DisableEnergyItem(item);
     }
 
     void TelephoneInteraction()
     {
+        animator.SetBool("walking", false);
+        animator.SetBool("run", false);
         // GameManager.Instance.AddCurrentTime(addTelephoneTime);
         GameManager.Instance.DisableTelephone();
         pickingTelephone = true;
@@ -225,6 +236,8 @@ public class PlayerScript : MonoBehaviour
 
     void TVInteraction()
     {
+        animator.SetBool("walking", false);
+        animator.SetBool("run", false);
         GameManager.Instance.DisableTV();
         pickingTV = true;
     }
