@@ -28,6 +28,7 @@ public class PlayerScript : MonoBehaviour
     float energyTimer = 0;
 
     AudioSource audiosource;
+    public AudioClip pickEnergySound, pickSueterSound;
 
     private void Start()
     {
@@ -192,6 +193,7 @@ public class PlayerScript : MonoBehaviour
 
     void SueterInteraction(GameObject sueter)
     {
+        audiosource.PlayOneShot(pickSueterSound);
         GameManager.Instance.score += 50; //eso luego se pone con una variable y eso, pero era pa ponerle algo
         GameManager.Instance.AddCurrentTime(2);
         GameManager.Instance.DisableSueter(sueter);
@@ -200,7 +202,7 @@ public class PlayerScript : MonoBehaviour
 
     void EnergyItemInteraction(GameObject item)
     {
-        audiosource.Play();
+        audiosource.PlayOneShot(pickEnergySound);
         movSpeed = energySpeed;
         pickingFast = true;
         hasEnergy = true;
