@@ -58,6 +58,9 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
         Instance = this;
 
         saveManager = GetComponent<SaveManager>();
@@ -257,6 +260,8 @@ public class GameManager : MonoBehaviour
 
     void GameOver()
     {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         saveManager.Save();
         gameOverPanel.SetActive(true);
         stopGame = true;
