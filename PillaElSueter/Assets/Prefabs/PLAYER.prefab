@@ -1,35 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1218850549
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1218850550}
-  m_Layer: 0
-  m_Name: CameraWorldPosition
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1218850550
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1218850549}
-  m_LocalRotation: {x: 0.017409002, y: 0.9403232, z: -0.3363336, w: -0.048672207}
-  m_LocalPosition: {x: -0.00008380413, y: -0.0001239919, z: -0.00015115397}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1022197111655357025}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 39.111, y: 187.64699, z: 4.841}
 --- !u!1 &1022197111255588524
 GameObject:
   m_ObjectHideFlags: 0
@@ -113,7 +83,7 @@ MonoBehaviour:
   normalSpeed: 15
   energySpeed: 30
   lateralSpeed: 120
-  pickingFastTime: 0.5
+  pickingFastTime: 1
   pickingTelephoneTime: 4
   pickingTVTime: 1.5
   energyItemTime: 5
@@ -128,6 +98,7 @@ MonoBehaviour:
   hasEnergy: 0
   pickEnergySound: {fileID: 0}
   pickSueterSound: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!82 &81800468
 AudioSource:
   m_ObjectHideFlags: 0
@@ -256,7 +227,6 @@ Transform:
   m_LocalPosition: {x: -0.66999996, y: 10.2, z: -8.62}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1218850550}
   - {fileID: 5394060527115074276}
   m_Father: {fileID: 1022197111255588496}
   m_RootOrder: 1
@@ -336,7 +306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acc2cae267caf7d4bb7cf5a52640adc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  worldPos: {fileID: 1218850550}
+  worldPos: {fileID: 0}
   player: {fileID: 1022197111255588524}
 --- !u!54 &5084789966495444153
 Rigidbody:
@@ -383,7 +353,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1022197111655357025}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 39.111, y: 187.64699, z: 4.841}
 --- !u!114 &8414924803522789772
 MonoBehaviour:
