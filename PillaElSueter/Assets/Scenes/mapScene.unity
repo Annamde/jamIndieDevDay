@@ -7371,12 +7371,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1743405996 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 6057041146863016876, guid: 6a6d517641a28ff4e883b82eafc04dbb,
-    type: 3}
-  m_PrefabInstance: {fileID: 1022197111568707632}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1763939126
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8782,7 +8776,7 @@ PrefabInstance:
     - target: {fileID: 4579116818305631010, guid: cfaf6d855ed93ab4480f01467e8a9663,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4579116818305631014, guid: cfaf6d855ed93ab4480f01467e8a9663,
         type: 3}
@@ -9234,11 +9228,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PLAYER
       objectReference: {fileID: 0}
-    - target: {fileID: 1022197111655357024, guid: 6a6d517641a28ff4e883b82eafc04dbb,
-        type: 3}
-      propertyPath: m_CullingMask.m_Bits
-      value: 311
-      objectReference: {fileID: 0}
     - target: {fileID: 1022197111255588525, guid: 6a6d517641a28ff4e883b82eafc04dbb,
         type: 3}
       propertyPath: tvBar
@@ -9249,36 +9238,6 @@ PrefabInstance:
       propertyPath: TelephoneBar
       value: 
       objectReference: {fileID: 1002781865}
-    - target: {fileID: 1022197111255588525, guid: 6a6d517641a28ff4e883b82eafc04dbb,
-        type: 3}
-      propertyPath: energyItemTime
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1022197111255588525, guid: 6a6d517641a28ff4e883b82eafc04dbb,
-        type: 3}
-      propertyPath: addTelephoneTime
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 1022197111255588525, guid: 6a6d517641a28ff4e883b82eafc04dbb,
-        type: 3}
-      propertyPath: energySpeed
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 1022197111255588525, guid: 6a6d517641a28ff4e883b82eafc04dbb,
-        type: 3}
-      propertyPath: animator
-      value: 
-      objectReference: {fileID: 1743405996}
-    - target: {fileID: 1022197111255588525, guid: 6a6d517641a28ff4e883b82eafc04dbb,
-        type: 3}
-      propertyPath: pickEnergySound
-      value: 
-      objectReference: {fileID: 8300000, guid: 6726e1f61ffe03a499950e92c3346963, type: 3}
-    - target: {fileID: 1022197111255588525, guid: 6a6d517641a28ff4e883b82eafc04dbb,
-        type: 3}
-      propertyPath: pickSueterSound
-      value: 
-      objectReference: {fileID: 8300000, guid: d46bd5bf41331a049b4bb6723ff1c700, type: 3}
     - target: {fileID: 1022197111255588496, guid: 6a6d517641a28ff4e883b82eafc04dbb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9334,31 +9293,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 595948579667253826, guid: 6a6d517641a28ff4e883b82eafc04dbb,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 370782ec807900049b5d554afd4b4a71, type: 2}
-    - target: {fileID: 3891280430676632042, guid: 6a6d517641a28ff4e883b82eafc04dbb,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1425950782711830097, guid: 6a6d517641a28ff4e883b82eafc04dbb,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5084789966495444153, guid: 6a6d517641a28ff4e883b82eafc04dbb,
-        type: 3}
-      propertyPath: m_CollisionDetection
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6057041146863016876, guid: 6a6d517641a28ff4e883b82eafc04dbb,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: d45928a47f2549942bb6f439347c82a2, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a6d517641a28ff4e883b82eafc04dbb, type: 3}
 --- !u!1001 &1043346123822905570

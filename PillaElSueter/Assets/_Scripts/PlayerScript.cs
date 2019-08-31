@@ -201,7 +201,7 @@ public class PlayerScript : MonoBehaviour
         animator.SetTrigger("pick");
         audiosource.PlayOneShot(pickSueterSound);
         GameManager.Instance.score += 50; //eso luego se pone con una variable y eso, pero era pa ponerle algo
-        GameManager.Instance.AddCurrentTime(2);
+        GameManager.Instance.AddCurrentTime(3);
         GameManager.Instance.DisableSueter(sueter);
         pickingFast = true;
     }

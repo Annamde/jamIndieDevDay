@@ -81,7 +81,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   normalSpeed: 15
-  energySpeed: 30
+  energySpeed: 25
   lateralSpeed: 120
   pickingFastTime: 1
   pickingTelephoneTime: 4
@@ -89,16 +89,16 @@ MonoBehaviour:
   energyItemTime: 5
   bottomRayHeight: 0.3
   topRayHeight: 2.2
-  addTelephoneTime: 50
+  addTelephoneTime: 30
   tvBar: {fileID: 0}
   TelephoneBar: {fileID: 0}
   pickingFast: 0
   pickingTelephone: 0
   pickingTV: 0
   hasEnergy: 0
-  pickEnergySound: {fileID: 0}
-  pickSueterSound: {fileID: 0}
-  animator: {fileID: 0}
+  pickEnergySound: {fileID: 8300000, guid: 6726e1f61ffe03a499950e92c3346963, type: 3}
+  pickSueterSound: {fileID: 8300000, guid: d46bd5bf41331a049b4bb6723ff1c700, type: 3}
+  animator: {fileID: 6057041146863016876}
 --- !u!82 &81800468
 AudioSource:
   m_ObjectHideFlags: 0
@@ -261,7 +261,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 311
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -290,7 +290,7 @@ BoxCollider:
   m_GameObject: {fileID: 1022197111655357054}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 3, y: 3, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
@@ -301,7 +301,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1022197111655357054}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: acc2cae267caf7d4bb7cf5a52640adc2, type: 3}
   m_Name: 
@@ -436,11 +436,21 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.7
       objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: efa09cbc16c1f134ca66a84b01a8ac59, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: d45928a47f2549942bb6f439347c82a2, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efa09cbc16c1f134ca66a84b01a8ac59, type: 3}
 --- !u!4 &6057041146853930434 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400142, guid: efa09cbc16c1f134ca66a84b01a8ac59,
+    type: 3}
+  m_PrefabInstance: {fileID: 6057041146853535436}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &6057041146863016876 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9500000, guid: efa09cbc16c1f134ca66a84b01a8ac59,
     type: 3}
   m_PrefabInstance: {fileID: 6057041146853535436}
   m_PrefabAsset: {fileID: 0}
