@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
 
     [Header("TV Variables")]
     public GameObject television;
-    public Material offMaterial, onMaterial;
+    public GameObject onMaterial;
     public float startingMinTVTime, startingMaxTVTime;
     float minTVTime, maxTVTime;
 
@@ -108,8 +108,6 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        //print(minSueterTime + " min");
-        //print(maxSueterTime + " max");
         if (!stopGame)
         {
             if (!isTVOn)
@@ -226,7 +224,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(Random.Range(minTVTime, maxTVTime));
         if (!isTVOn)
         {
-            //cambiar textura
+            onMaterial.SetActive(true);
             television.GetComponent<AudioSource>().Play();
             isTVOn = true;
             print("TV ON");
@@ -237,7 +235,7 @@ public class GameManager : MonoBehaviour
     public void DisableTV()
     {
         print("TV OFF");
-        //cambiar textura
+        onMaterial.SetActive(false);
         television.GetComponent<AudioSource>().Stop();
         isTVOn = false;
     }

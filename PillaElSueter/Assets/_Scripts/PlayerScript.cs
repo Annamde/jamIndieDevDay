@@ -147,7 +147,10 @@ public class PlayerScript : MonoBehaviour
         }
 
         else
+        {
             animator.SetBool("walking", false);
+            animator.SetBool("run", false);
+        }
 
         if (!characterController.isGrounded)
             movement.y = Physics.gravity.y * Time.deltaTime * 10;
@@ -221,7 +224,6 @@ public class PlayerScript : MonoBehaviour
         movSpeed = energySpeed;
         pickingFast = true;
         hasEnergy = true;
-        animator.SetBool("run", true);
         GameManager.Instance.DisableEnergyItem(item);
     }
 
