@@ -917,16 +917,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   frames:
-  - {fileID: 2800000, guid: facd86487ff6ff141b5a94dff7d59396, type: 3}
-  - {fileID: 2800000, guid: de0bb839750e95344a0894650002a5e3, type: 3}
-  - {fileID: 2800000, guid: bc88542ea0f1904409e6fdfd06539e57, type: 3}
-  - {fileID: 2800000, guid: 6f14027ca9e87bf498ea0b48117b2c9e, type: 3}
-  - {fileID: 2800000, guid: b6d25e634681774489679c5cc9f7ad50, type: 3}
-  - {fileID: 2800000, guid: f10a8da804ae42242b3c131620c92eb9, type: 3}
-  - {fileID: 2800000, guid: ef52d43dd2892694f81f9d7d657cac5e, type: 3}
-  - {fileID: 2800000, guid: 492e66b70e89e124cad6a075d9781cd8, type: 3}
-  - {fileID: 2800000, guid: 3c6d5fb02985e264497384027518e184, type: 3}
-  - {fileID: 2800000, guid: 672fe3079935fde42974d71560fcfc6c, type: 3}
+  - {fileID: 2800000, guid: 2599fe12193c07f40b5647bd5dc6d547, type: 3}
+  - {fileID: 2800000, guid: bc2e22f2db34743418627d91010bb036, type: 3}
+  - {fileID: 2800000, guid: 5ebd0ba9f3b94184a968b904c60a920e, type: 3}
+  - {fileID: 2800000, guid: 177edc562fa68dd4cbfc6bc371f1298b, type: 3}
+  - {fileID: 2800000, guid: bd8ae15c2037def47bc405a72413bb5c, type: 3}
+  - {fileID: 2800000, guid: e3cdb353e7755eb42aaca2c47092e0c5, type: 3}
+  - {fileID: 2800000, guid: 29ad6ab5332c7c442b44b04661285107, type: 3}
+  - {fileID: 2800000, guid: d66eb8b0d5e07274bb452fe1ad71165f, type: 3}
+  - {fileID: 2800000, guid: 3236c2c8ab49ef849ae3d9820f80edf2, type: 3}
+  - {fileID: 2800000, guid: 258f147c1464e0647a352487ff8a13ff, type: 3}
+  - {fileID: 2800000, guid: 9b5d409d40bf28b409f12bbb559e4ef0, type: 3}
+  - {fileID: 2800000, guid: e40dbc67b2604d34887fe7fbc7a1eea4, type: 3}
+  - {fileID: 2800000, guid: ffc7ca4ac7337154e80eb3908c08a91e, type: 3}
+  - {fileID: 2800000, guid: ff586699ee97489429e9612aa21e5bac, type: 3}
+  - {fileID: 2800000, guid: 40699227dfcc38d40b3582f3741cc132, type: 3}
+  - {fileID: 2800000, guid: 20d9ad3c78a4d294ca09359e49d7b670, type: 3}
   framesPorSegundo: 10
 --- !u!64 &134003287
 MeshCollider:
@@ -6062,7 +6068,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 974de08ed96672c47be51ebdea4de931, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.1179123
+      value: -4.2
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 974de08ed96672c47be51ebdea4de931, type: 3}
       propertyPath: m_LocalPosition.y
