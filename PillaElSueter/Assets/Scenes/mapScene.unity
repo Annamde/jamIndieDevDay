@@ -913,7 +913,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &134003285
 Transform:
   m_ObjectHideFlags: 0
@@ -4728,7 +4728,7 @@ MonoBehaviour:
   startingMinPhoneTime: 30
   startingMaxPhoneTime: 40
   television: {fileID: 2095328466}
-  onMaterial: {fileID: 0}
+  onMaterial: {fileID: 134003284}
   startingMinTVTime: 15
   startingMaxTVTime: 25
   currentTime: 0
@@ -9341,6 +9341,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579116819549085139, guid: cfaf6d855ed93ab4480f01467e8a9663,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4579116818305631014, guid: cfaf6d855ed93ab4480f01467e8a9663,
         type: 3}
