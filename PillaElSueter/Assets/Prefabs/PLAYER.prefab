@@ -207,7 +207,6 @@ GameObject:
   - component: {fileID: 1022197111655357024}
   - component: {fileID: 1022197111655357055}
   - component: {fileID: 3891280430676632042}
-  - component: {fileID: 1425950782711830097}
   - component: {fileID: 5084789966495444153}
   m_Layer: 0
   m_Name: Main Camera
@@ -294,20 +293,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 3, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1425950782711830097
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1022197111655357054}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acc2cae267caf7d4bb7cf5a52640adc2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  worldPos: {fileID: 0}
-  player: {fileID: 1022197111255588524}
 --- !u!54 &5084789966495444153
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -333,7 +318,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5394060527115074276}
-  - component: {fileID: 8414924803522789772}
   m_Layer: 0
   m_Name: CameraWorldPosition
   m_TagString: Untagged
@@ -355,20 +339,6 @@ Transform:
   m_Father: {fileID: 1022197111655357025}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 39.111, y: 187.64699, z: 4.841}
---- !u!114 &8414924803522789772
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3299684761915913116}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acc2cae267caf7d4bb7cf5a52640adc2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  worldPos: {fileID: 5394060527115074276}
-  player: {fileID: 1022197111255588524}
 --- !u!1001 &6057041146853535436
 PrefabInstance:
   m_ObjectHideFlags: 0
